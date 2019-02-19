@@ -6,13 +6,39 @@
 //  Copyright © 2019 Denis Bystruev. All rights reserved.
 //
 
-struct Emoji {
+import Foundation
+
+struct Emoji: Codable {
     var symbol: String
     var name: String
     var description: String
     var usage: String
     
-    static func load() -> [Emoji] {
+    var encoded: Data? {
+        let encoder = PropertyListEncoder()
+        let data = try? encoder.encode(self)
+        
+        return data
+    }
+    
+    init(symbol: String, name: String, description: String, usage: String) {
+        self.symbol = symbol
+        self.name = name
+        self.description = description
+        self.usage = usage
+    }
+    
+    init?(data: Data?) {
+        guard let data = data else { return nil }
+        
+        let decoder = PropertyListDecoder()
+        
+        guard let emoji = try? decoder.decode(Emoji.self, from: data) else { return nil }
+        
+        self.init(symbol: emoji.symbol, name: emoji.name, description: emoji.description, usage: emoji.usage)
+    }
+    
+    static func loadDefaultValues() -> [Emoji] {
         return [
             Emoji(symbol: "😀", name: "Смайлик", description: "Улыбающаяся рожица", usage: "Используется, когда смешно"),
             Emoji(symbol: "👮‍♀️", name: "Коп", description: "Полицейский", usage: "Призыв к соблюдению закона"),
