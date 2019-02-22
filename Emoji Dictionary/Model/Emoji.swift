@@ -28,6 +28,15 @@ struct Emoji: Codable {
         self.usage = usage
     }
     
+    init?(_ emojiMO: EmojiMO) {
+        guard let symbol = emojiMO.symbol else { return nil }
+        guard let name = emojiMO.name else { return nil }
+        guard let description = emojiMO.summary else { return nil }
+        guard let usage = emojiMO.usage else { return nil }
+        
+        self.init(symbol: symbol, name: name, description: description, usage: usage)
+    }
+    
     init?(data: Data?) {
         guard let data = data else { return nil }
         

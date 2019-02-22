@@ -16,6 +16,8 @@
 		693D7A7F22173CB20084C234 /* EmojiTableViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7A7E22173CB20084C234 /* EmojiTableViewController+UITableViewDataSource.swift */; };
 		693D7A8122173F860084C234 /* EmojiTableViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7A8022173F860084C234 /* EmojiTableViewController+UITableViewDelegate.swift */; };
 		693D7A84221745D20084C234 /* EmojiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7A83221745D20084C234 /* EmojiTableViewCell.swift */; };
+		696576F422206689004D8E4A /* Emoji_Dictionary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 696576F222206689004D8E4A /* Emoji_Dictionary.xcdatamodeld */; };
+		696576F622206D51004D8E4A /* EmojiMO+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696576F522206D51004D8E4A /* EmojiMO+init.swift */; };
 		69F9F8A5221C79D700D7E69C /* EmojiDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F8A4221C79D700D7E69C /* EmojiDetailTableViewController.swift */; };
 		69F9F8A7221C7F9700D7E69C /* UITextField+textValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F8A6221C7F9600D7E69C /* UITextField+textValue.swift */; };
 		69F9F8A9221C8CD200D7E69C /* EmojiStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F8A8221C8CD200D7E69C /* EmojiStorage.swift */; };
@@ -33,6 +35,8 @@
 		693D7A7E22173CB20084C234 /* EmojiTableViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmojiTableViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		693D7A8022173F860084C234 /* EmojiTableViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmojiTableViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		693D7A83221745D20084C234 /* EmojiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewCell.swift; sourceTree = "<group>"; };
+		696576F322206689004D8E4A /* Emoji_Dictionary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Emoji_Dictionary.xcdatamodel; sourceTree = "<group>"; };
+		696576F522206D51004D8E4A /* EmojiMO+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmojiMO+init.swift"; sourceTree = "<group>"; };
 		69F9F8A4221C79D700D7E69C /* EmojiDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetailTableViewController.swift; sourceTree = "<group>"; };
 		69F9F8A6221C7F9600D7E69C /* UITextField+textValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+textValue.swift"; sourceTree = "<group>"; };
 		69F9F8A8221C8CD200D7E69C /* EmojiStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStorage.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				693D7A76221739C10084C234 /* Emoji.swift */,
 				69F9F8A6221C7F9600D7E69C /* UITextField+textValue.swift */,
 				69F9F8A8221C8CD200D7E69C /* EmojiStorage.swift */,
+				696576F222206689004D8E4A /* Emoji_Dictionary.xcdatamodeld */,
+				696576F522206D51004D8E4A /* EmojiMO+init.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,10 +210,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				696576F422206689004D8E4A /* Emoji_Dictionary.xcdatamodeld in Sources */,
 				693D7A8122173F860084C234 /* EmojiTableViewController+UITableViewDelegate.swift in Sources */,
 				693D7A77221739C10084C234 /* Emoji.swift in Sources */,
 				69F9F8A7221C7F9700D7E69C /* UITextField+textValue.swift in Sources */,
 				693D7A7F22173CB20084C234 /* EmojiTableViewController+UITableViewDataSource.swift in Sources */,
+				696576F622206D51004D8E4A /* EmojiMO+init.swift in Sources */,
 				69F9F8A5221C79D700D7E69C /* EmojiDetailTableViewController.swift in Sources */,
 				69F9F8A9221C8CD200D7E69C /* EmojiStorage.swift in Sources */,
 				693D7A7D22173C1A0084C234 /* EmojiTableViewController.swift in Sources */,
@@ -412,6 +420,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		696576F222206689004D8E4A /* Emoji_Dictionary.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				696576F322206689004D8E4A /* Emoji_Dictionary.xcdatamodel */,
+			);
+			currentVersion = 696576F322206689004D8E4A /* Emoji_Dictionary.xcdatamodel */;
+			path = Emoji_Dictionary.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 693D7A59221739A30084C234 /* Project object */;
 }

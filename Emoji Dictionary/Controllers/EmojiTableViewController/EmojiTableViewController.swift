@@ -10,9 +10,15 @@ import UIKit
 
 class EmojiTableViewController: UITableViewController {
 
-    var emojis = [Emoji]() {
+//    var emojis = [Emoji]() {
+//        didSet {
+//            EmojiStorage.shared.save(emojis: emojis)
+//        }
+//    }
+    
+    var emojisMO = [EmojiMO]() {
         didSet {
-            EmojiStorage.shared.save(emojis: emojis)
+            AppDelegate.delegate!.saveContext()
         }
     }
     
@@ -21,10 +27,16 @@ class EmojiTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let emojis = EmojiStorage.shared.load() {
-            self.emojis = emojis
-        } else {
-            emojis = Emoji.loadDefaultValues()
+//        if let emojis = EmojiStorage.shared.load() {
+//            self.emojis = emojis
+//        } else {
+//            emojis = Emoji.loadDefaultValues()
+//        }
+        
+        AppDelegate.delegate!.saveContext()
+        
+        if let emojisMO = EmojiMO.fetch() {
+            self.emojisMO = emojisMO
         }
         
         startUI()
@@ -39,9 +51,10 @@ class EmojiTableViewController: UITableViewController {
         guard let controller = segue.destination as? EmojiDetailTableViewController else { return }
         guard let selectedPath = tableView.indexPathForSelectedRow else { return }
         
-        let emoji = emojis[selectedPath.row]
+//        let emoji = emojis[selectedPath.row]
+        let emojiMO = emojisMO[selectedPath.row]
         
-        controller.emoji = emoji
+        controller.emoji = Emoji(emojiMO)
         controller.navigationItem.title = "Edit"
     }
     
@@ -50,14 +63,22 @@ class EmojiTableViewController: UITableViewController {
         guard let controller = segue.source as? EmojiDetailTableViewController else { return }
         guard let emoji = controller.emoji else { return }
         
+        let emojiMO = EmojiMO(emoji)
+        
         if let selectedPath = tableView.indexPathForSelectedRow {
             // Edited row
-            emojis[selectedPath.row] = emoji
+            
+//            emojis[selectedPath.row] = emoji
+            emojisMO[selectedPath.row] = emojiMO
+            
             tableView.reloadRows(at: [selectedPath], with: .automatic)
         } else {
             // Added row
-            let indexPath = IndexPath(row: emojis.count, section: 0)
-            emojis.append(emoji)
+//            let indexPath = IndexPath(row: emojis.count, section: 0)
+            let indexPath = IndexPath(row: emojisMO.count, section: 0)
+            
+//            emojis.append(emoji)
+            emojisMO.append(emojiMO)
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }

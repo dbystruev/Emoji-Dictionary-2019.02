@@ -14,13 +14,24 @@ extension EmojiTableViewController/*: UITableViewDelegate*/ {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         switch editingStyle {
         case .insert:
-            let emoji = emojis[indexPath.row]
-            emojis.insert(emoji, at: indexPath.row)
+//            let emoji = emojis[indexPath.row]
+//            emojis.insert(emoji, at: indexPath.row)
+            let emojiMO = emojisMO[indexPath.row]
+            emojisMO.insert(emojiMO, at: indexPath.row)
             tableView.insertRows(at: [indexPath], with: .top)
         case .delete:
-            emojis.remove(at: indexPath.row)
+//            emojis.remove(at: indexPath.row)
+            
+            let emojiMO = emojisMO.remove(at: indexPath.row)
+            
+            let delegate = AppDelegate.delegate!
+            let context = delegate.context
+            context?.delete(emojiMO)
+            delegate.saveContext()
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         case .none:
             break
@@ -28,8 +39,13 @@ extension EmojiTableViewController/*: UITableViewDelegate*/ {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedEmoji = emojis.remove(at: sourceIndexPath.row)
-        emojis.insert(movedEmoji, at: destinationIndexPath.row)
+        
+//        let movedEmoji = emojis.remove(at: sourceIndexPath.row)
+//        emojis.insert(movedEmoji, at: destinationIndexPath.row)
+        
+        let movedEmojiMO = emojisMO.remove(at: sourceIndexPath.row)
+        emojisMO.insert(movedEmojiMO, at: destinationIndexPath.row)
+        
         tableView.reloadData()
     }
     
