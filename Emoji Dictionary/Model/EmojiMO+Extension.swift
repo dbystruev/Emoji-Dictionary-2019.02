@@ -1,5 +1,5 @@
 //
-//  EmojiMO+init.swift
+//  EmojiMO+Extension.swift
 //  Emoji Dictionary
 //
 //  Created by Denis Bystruev on 22/02/2019.
@@ -37,5 +37,14 @@ extension EmojiMO {
         }
         
         return emojis
+    }
+    
+    func removeFromCoreDataAndSaveContext() {
+        guard let delegate = AppDelegate.delegate else { return }
+        
+        let context = delegate.context
+        
+        context?.delete(self)
+        delegate.saveContext()
     }
 }

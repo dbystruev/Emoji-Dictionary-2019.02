@@ -69,11 +69,8 @@ class EmojiTableViewController: UITableViewController {
             // Edited row
             
 //            emojis[selectedPath.row] = emoji
-            let delegate = AppDelegate.delegate!
-            let context = delegate.context
-            
             let emojiToDelete = emojisMO[selectedPath.row]
-            context?.delete(emojiToDelete)
+            emojiToDelete.removeFromCoreDataAndSaveContext()
             
             emojisMO[selectedPath.row] = emojiMO
             

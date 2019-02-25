@@ -26,11 +26,7 @@ extension EmojiTableViewController/*: UITableViewDelegate*/ {
 //            emojis.remove(at: indexPath.row)
             
             let emojiMO = emojisMO.remove(at: indexPath.row)
-            
-            let delegate = AppDelegate.delegate!
-            let context = delegate.context
-            context?.delete(emojiMO)
-            delegate.saveContext()
+            emojiMO.removeFromCoreDataAndSaveContext()
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         case .none:
@@ -44,7 +40,12 @@ extension EmojiTableViewController/*: UITableViewDelegate*/ {
 //        emojis.insert(movedEmoji, at: destinationIndexPath.row)
         
         let movedEmojiMO = emojisMO.remove(at: sourceIndexPath.row)
-        emojisMO.insert(movedEmojiMO, at: destinationIndexPath.row)
+        let emoji = Emoji(movedEmojiMO)!
+        
+        movedEmojiMO.removeFromCoreDataAndSaveContext()
+        let emojiMO = EmojiMO(emoji)
+        
+        emojisMO.insert(emojiMO, at: destinationIndexPath.row)
         
         tableView.reloadData()
     }
