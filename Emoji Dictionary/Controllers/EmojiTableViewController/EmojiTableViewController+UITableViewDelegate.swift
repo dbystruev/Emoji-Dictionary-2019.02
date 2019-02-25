@@ -20,7 +20,12 @@ extension EmojiTableViewController/*: UITableViewDelegate*/ {
 //            let emoji = emojis[indexPath.row]
 //            emojis.insert(emoji, at: indexPath.row)
             let emojiMO = emojisMO[indexPath.row]
-            emojisMO.insert(emojiMO, at: indexPath.row)
+            
+            let newEmoji = Emoji(emojiMO)!
+            let newEmojiMO = EmojiMO(newEmoji)
+            
+            emojisMO.insert(newEmojiMO, at: indexPath.row)
+            
             tableView.insertRows(at: [indexPath], with: .top)
         case .delete:
 //            emojis.remove(at: indexPath.row)
